@@ -1,10 +1,11 @@
 from PIL import Image, ImageFilter, UnidentifiedImageError
+from globals import RESOLUTION, Transformation, Resize_Method, Color_Palette
 import cv2
 import numpy
 import colorsys
 import os
 
-def process(file_path, target_size, trans_type, color_type):
+def process(file_path, resolution, resize_method, transformation, color_palette):
     print(f"Processing file: {file_path}")
 
     #Check if the input_file is a valid file type
@@ -12,11 +13,27 @@ def process(file_path, target_size, trans_type, color_type):
 
     #Resize to target_size
     if image_obj:
-        resized_image_obj = resize_image(image_obj, target_size)
+        match resize_method:
+            case Resize_Method.RESIZE.value:
+                resized_image_obj = resize_image(image_obj, resolution)
+            case Resize_Method.CROP.value:
+                #TODO: Implement crop
+                resized_image_obj = image_obj
+            case _:
+                resized_image_obj = image_obj
 
     #Apply transformations based on trans_type and color_type
     if resized_image_obj:
-        transformed_image_obj = transform_image(resized_image_obj, trans_type)   
+        match transformation:
+            case Transformation.WATER.value:
+                transformed_image_obj = transform_image(resized_image_obj)
+            case Transformation.EMBOSS.value:
+                #TODO: Implement emboss
+                transformed_image_obj = resized_image_obj
+            case _:
+                transformed_image_obj = resized_image_obj
+
+    #TODO: Implement color palette
 
     #Save file to output
     if transformed_image_obj:
@@ -36,9 +53,9 @@ def valid_input_file(file_path):
         print(f"An unexpected error occurred with file: {file_path} - {e}")
         return None
 
-def resize_image(image_obj, target_size):
+def resize_image(image_obj, resolution):
     try:
-        size = (2560, 1440)
+        size = RESOLUTION[resolution]
         resized_image_obj = image_obj.resize(size, Image.LANCZOS)
         print(f"Image resized to: {resized_image_obj.size}")
         return resized_image_obj
@@ -46,7 +63,7 @@ def resize_image(image_obj, target_size):
         print(f"An unexpected error occurred while resizing image - {e}")
         return None
 
-def transform_image(image_obj, trans_type):
+def transform_image(image_obj):
     try:
         # OpenCV uses BGR color order, Pillow uses RGB, so conversion is needed
         cv2_image_obj = cv2.cvtColor(numpy.array(image_obj), cv2.COLOR_RGB2BGR)
