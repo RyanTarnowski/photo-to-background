@@ -2,10 +2,12 @@ from processing import process
 from globals import validate_argv, display_help_text
 import sys
 import os
+from pyfiglet import Figlet
 
 def main():
-    #TODO: Use pyfiglet for the title
-    print("Photo to background")
+    fig = Figlet(font='slant')
+    print(fig.renderText('Photo 2 Background'))
+
     if validate_argv(sys.argv): 
         print("Processing photos in input ...")
         
