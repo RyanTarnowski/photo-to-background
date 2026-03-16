@@ -21,6 +21,9 @@ def main():
                         color_palette=sys.argv[4])
         
         print("Processing complete")
+    else:
+        display_help_text()
+
     return
 
 if __name__ == "__main__":

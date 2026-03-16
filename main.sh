@@ -1,1 +1,1 @@
-python3 src/main.py "1080p" "resize" "water" "photo"
+python3 src/main.py "1440p" "crop" "water" "photo256"

@@ -4,6 +4,7 @@ import cv2
 import numpy
 import colorsys
 import os
+import math
 
 def process(file_path, resolution, resize_method, transformation, color_palette):
     print(f"Processing file: {file_path}")
@@ -17,23 +18,27 @@ def process(file_path, resolution, resize_method, transformation, color_palette)
             case Resize_Method.RESIZE.value:
                 resized_image_obj = resize_image(image_obj, resolution)
             case Resize_Method.CROP.value:
-                #TODO: Implement crop
-                resized_image_obj = image_obj
+                resized_image_obj = crop_image(image_obj, resolution)
             case _:
                 resized_image_obj = image_obj
 
-    #Apply transformations based on trans_type and color_type
+    #Apply transformation
     if resized_image_obj:
         match transformation:
             case Transformation.WATER.value:
-                transformed_image_obj = transform_image(resized_image_obj)
+                transformed_image_obj = transform_water(resized_image_obj)
             case Transformation.EMBOSS.value:
-                #TODO: Implement emboss
-                transformed_image_obj = resized_image_obj
+                transformed_image_obj = transform_emboss(resized_image_obj)
             case _:
                 transformed_image_obj = resized_image_obj
 
-    #TODO: Implement color palette
+    #Apply color palette
+    if transformed_image_obj:
+        match color_palette:
+            case Color_Palette.PHOTO256.value:
+                transformed_image_obj = color_palette_original256(transformed_image_obj)
+            case Color_Palette.OMARCHY.value:
+                transformed_image_obj = color_palette_omarchy(transformed_image_obj)
 
     #Save file to output
     if transformed_image_obj:
@@ -63,7 +68,31 @@ def resize_image(image_obj, resolution):
         print(f"An unexpected error occurred while resizing image - {e}")
         return None
 
-def transform_image(image_obj):
+def crop_image(image_obj, resolution):
+    try:
+        size = RESOLUTION[resolution]
+
+        width, height = image_obj.size
+        new_width, new_height = size
+
+        #Return the original image if the image can't be cropped
+        if width < new_width or height < new_height:
+            print("Image size smaller than target size")
+            return image_obj
+
+        left = int(math.ceil((width - new_width) / 2))
+        top = int(math.ceil((height - new_height) / 2))
+        right = int(width - math.floor((width - new_width) / 2))
+        bottom = int(height - math.floor((height - new_height) / 2))
+
+        resized_image_obj = image_obj.crop((left, top, right, bottom))
+        print(f"Image cropped to: {resized_image_obj.size}")
+        return resized_image_obj
+    except Exception as e:
+        print(f"An unexpected error occurred while cropping image - {e}")
+        return None
+
+def transform_water(image_obj):
     try:
         # OpenCV uses BGR color order, Pillow uses RGB, so conversion is needed
         cv2_image_obj = cv2.cvtColor(numpy.array(image_obj), cv2.COLOR_RGB2BGR)
@@ -79,12 +108,40 @@ def transform_image(image_obj):
         
         # Convert the cv2 back to pil and apply some extra effects
         transformed_image_obj = Image.fromarray(cv2.cvtColor(cv2_image_obj, cv2.COLOR_BGR2RGB))
-        transformed_image_obj = transformed_image_obj.quantize(colors=256)
-        transformed_image_obj = transformed_image_obj.convert("RGB")
         
         return transformed_image_obj
     except Exception as e:
         print(f"An unexpected error occurred while transforming image - {e}")
+        return None
+
+def transform_emboss(image_obj):
+    try:
+        transformed_image_obj = image_obj
+        #TODO: Implement image emboss 
+        return transformed_image_obj
+    except Exception as e:
+        print(f"An unexpected error occurred while transforming image - {e}")
+        return None
+
+def color_palette_original256(image_obj):
+    try:
+        transformed_image_obj = image_obj.quantize(colors=256)
+        transformed_image_obj = transformed_image_obj.convert("RGB")
+        
+        return transformed_image_obj
+    except Exception as e:
+        print(f"An unexpected error occurred while appling color palette - {e}")
+        return None
+
+def color_palette_omarchy(image_obj):
+    try:
+        #TODO: Read colors from omarchy style config and apply them to the image
+        transformed_image_obj = image_obj.quantize(colors=256)
+        transformed_image_obj = transformed_image_obj.convert("RGB")
+        
+        return transformed_image_obj
+    except Exception as e:
+        print(f"An unexpected error occurred while appling color palette - {e}")
         return None
 
 def save_image(file_path, image_obj):
