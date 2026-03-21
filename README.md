@@ -27,9 +27,9 @@ The idea behind this project is to take a selection of real world photos I've ta
   - omarchy: Reduces color palette of photo to 3 colors and applies 3 colors from the users omarchy color theme config. (Expects user to be using Omarchy, if not defaults to photo3)
 
 Here are some examples that I like:
-  <img src="./assets/Castle1.jpg" width="400"><img src="./assets/Castle1_background.jpg" width="400">
-  <img src="./assets/Garden3.jpg" width="400"><img src="./assets/Garden3_background.jpg" width="400">
-  <img src="./assets/Ramen1.jpg" width="400"><img src="./assets/Ramen1_background.jpg" width="400">
+- <img src="./assets/Castle1.jpg" width="400"><img src="./assets/Castle1_background.jpg" width="400">
+- <img src="./assets/Garden3.jpg" width="400"><img src="./assets/Garden3_background.jpg" width="400">
+- <img src="./assets/Ramen1.jpg" width="400"><img src="./assets/Ramen1_background.jpg" width="400">
 
 ## Required Packages
 - python3
