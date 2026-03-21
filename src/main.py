@@ -9,7 +9,7 @@ def main():
     print(fig.renderText('Photo 2 Background'))
 
     if validate_argv(sys.argv): 
-        print("Processing photos in input ...")
+        print("Processing photos in input ...\n")
         
         for file in os.listdir("./input"):
             file_path = os.path.join("./input", file)

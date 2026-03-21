@@ -1,6 +1,11 @@
 from enum import Enum
 import json
 
+RED = "\033[31m"
+GREEN = "\033[32m"
+RESET = "\033[0m" #default
+OMARCHY_THEME_PATH = ".config/omarchy/current/theme/colors.toml"
+
 RESOLUTION = {
     '1080p': [1920, 1080],
     '1440p': [2560, 1440],
@@ -15,16 +20,12 @@ class Resize_Method(Enum):
 class Transformation(Enum):
     NONE = "none"
     WATER = "water"
-    EMBOSS = "emboss"
 
 class Color_Palette(Enum):
     PHOTO = "photo"
     PHOTO256 = "photo256"
+    PHOTO3 = "photo3"
     OMARCHY = "omarchy"
-
-RED = "\033[31m"
-GREEN = "\033[32m"
-RESET = "\033[0m" #default
 
 def validate_argv(argv):
     if len(argv) != 5:
