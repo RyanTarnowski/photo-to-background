@@ -28,11 +28,18 @@ The idea behind this project is to take a selection of real world photos I've ta
 
 Here are some examples that I like:
 - Before:
+  <img src="./assets/Castle1.jpg" width="200">
   - ![Castle before](./assets/Castle1.jpg)
 - After: 
   - ![Castle after](./assets/Castle1_background.jpg)
-
-
+- Before:
+  - ![Garden before](./assets/Garden3.jpg)
+- After: 
+  - ![Garden after](./assets/Garden3_background.jpg)
+- Before:
+  - ![Ramen before](./assets/Ramen1.jpg)
+- After: 
+  - ![Ramen after](./assets/Ramen1_background.jpg)
 
 ## Required Packages
 - numpy==2.4.3
