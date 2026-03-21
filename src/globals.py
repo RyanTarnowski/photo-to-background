@@ -57,6 +57,6 @@ def display_help_text():
     print(f"2. Resize Method: {[item.value for item in Resize_Method]}")
     print(f"3. Transformation: {[item.value for item in Transformation]}")
     print(f"4. Color Palette: {[item.value for item in Color_Palette]}")
-    print(f'\nExample: {GREEN}python3 src/main.py "1440p" "resize" "water" "photo"{RESET}')
+    print(f'\nExample: {GREEN}python3 src/main.py "1440p" "resize" "water" "photo256"{RESET}')
     print("-----------------------------------------------------------------")
     

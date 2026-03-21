@@ -1,4 +1,18 @@
-# photo 2 background
+```
+    ____  __          __           ___
+   / __ \/ /_  ____  / /_____     |__ \
+  / /_/ / __ \/ __ \/ __/ __ \    __/ /
+ / ____/ / / / /_/ / /_/ /_/ /   / __/
+/_/   /_/ /_/\____/\__/\____/   /____/
+
+    ____             __                                    __
+   / __ )____ ______/ /______ __________  __  ______  ____/ /
+  / __  / __ `/ ___/ //_/ __ `/ ___/ __ \/ / / / __ \/ __  /
+ / /_/ / /_/ / /__/ ,< / /_/ / /  / /_/ / /_/ / / / / /_/ /
+/_____/\__,_/\___/_/|_|\__, /_/   \____/\__,_/_/ /_/\__,_/
+                      /____/
+```
+
 The idea behind this project is to take a selection of real world photos I've taken and transform them into various stylized backgrounds. 
 
 ### Features
@@ -12,11 +26,11 @@ The idea behind this project is to take a selection of real world photos I've ta
   - photo3: Reduces color palette of photo to 3 colors and applies 3 colors from with a range found in the photo
   - omarchy: Reduces color palette of photo to 3 colors and applies 3 colors from the users omarchy color theme config. (Expects user to be using Omarchy, if not defaults to photo3)
 
-
-
 Here are some examples that I like:
-
-
+- Before:
+  - ![Castle before](./assets/Castle1.jpg)
+- After: 
+  - ![Castle after](./assets/Castle1_background.jpg)
 
 
 
@@ -73,5 +87,3 @@ python3 src/main.py "1440p" "crop" "none" "omarchy"
 
 6. Navigate to the output folder to view the results
 
-```
-```
