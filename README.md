@@ -28,18 +28,9 @@ The idea behind this project is to take a selection of real world photos I've ta
 
 Here are some examples that I like:
 - Before:
-  <img src="./assets/Castle1.jpg" width="200">
-  - ![Castle before](./assets/Castle1.jpg)
-- After: 
-  - ![Castle after](./assets/Castle1_background.jpg)
-- Before:
-  - ![Garden before](./assets/Garden3.jpg)
-- After: 
-  - ![Garden after](./assets/Garden3_background.jpg)
-- Before:
-  - ![Ramen before](./assets/Ramen1.jpg)
-- After: 
-  - ![Ramen after](./assets/Ramen1_background.jpg)
+  <img src="./assets/Castle1.jpg" width="400"><img src="./assets/Castle1_background.jpg" width="400">
+  <img src="./assets/Garden3.jpg" width="400"><img src="./assets/Garden3_background.jpg" width="400">
+  <img src="./assets/Ramen1.jpg" width="400"><img src="./assets/Ramen1_background.jpg" width="400">
 
 ## Required Packages
 - numpy==2.4.3
@@ -82,6 +73,7 @@ python3 src/main.py
 ```
 
 2. You will be presented with help text for all available arguments
+<img src="./assets/helptext.png">
 
 3. Place some photos in the input folder
 
@@ -91,6 +83,7 @@ python3 src/main.py "1440p" "crop" "none" "omarchy"
 ```
 
 5. Log messages will be display for each photo as they are processed
+<img src="./assets/logtext.png">
 
 6. Navigate to the output folder to view the results
 
