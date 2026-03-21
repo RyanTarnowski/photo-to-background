@@ -22,7 +22,7 @@ class Transformation(Enum):
     WATER = "water"
 
 class Color_Palette(Enum):
-    PHOTO = "photo"
+    NONE = "none"
     PHOTO256 = "photo256"
     PHOTO3 = "photo3"
     OMARCHY = "omarchy"
