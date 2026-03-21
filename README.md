@@ -15,7 +15,7 @@
 
 The idea behind this project is to take a selection of real world photos I've taken and transform them into various stylized backgrounds. 
 
-### Features
+## Features
 - Resize photo: 
   - Resize: Resizes photo to selected resolution. (Will stretch photo if not 16:9)
   - Crop: Center crop of photo to selected resolution. (Won't crop if photo is smaller than selected resolution)
@@ -26,10 +26,10 @@ The idea behind this project is to take a selection of real world photos I've ta
   - photo3: Reduces color palette of photo to 3 colors and applies 3 colors from with a range found in the photo
   - omarchy: Reduces color palette of photo to 3 colors and applies 3 colors from the users omarchy color theme config. (Expects user to be using Omarchy, if not defaults to photo3)
 
-Here are some examples that I like:
-- <img src="./assets/Castle1.jpg" width="400"><img src="./assets/Castle1_background.jpg" width="400">
-- <img src="./assets/Garden3.jpg" width="400"><img src="./assets/Garden3_background.jpg" width="400">
-- <img src="./assets/Ramen1.jpg" width="400"><img src="./assets/Ramen1_background.jpg" width="400">
+### Here are some examples that I like:
+<img src="./assets/Castle1.jpg" width="400"><img src="./assets/Castle1_background.jpg" width="400">
+<img src="./assets/Garden3.jpg" width="400"><img src="./assets/Garden3_background.jpg" width="400">
+<img src="./assets/Ramen1.jpg" width="400"><img src="./assets/Ramen1_background.jpg" width="400">
 
 ## Required Packages
 - python3
@@ -38,7 +38,7 @@ Here are some examples that I like:
 - pillow==12.1.1
 - pyfiglet==1.0.4
 
-### Setup virtual environment
+## Setup virtual environment
 1. Open a terminal or command prompt and navigate to project directory
 
 2. Create a virtual environment using the venv module:
@@ -66,7 +66,7 @@ pip list
 deactivate
 ```
 
-## How to run
+## How to Run
 1. Within your virtual environment you can run cmd:
 ```
 python3 src/main.py
