@@ -1,12 +1,6 @@
-from pathlib import Path
-from globals import OMARCHY_THEME_PATH
 import tomllib
-import os
 
-home_dir = Path("~").expanduser()
-file_path = home_dir / OMARCHY_THEME_PATH
-
-def get_omarchy_theme_colors():
+def get_omarchy_theme_colors(file_path):
     try:
         with open(file_path, 'rb') as f:
             data = tomllib.load(f)

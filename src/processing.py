@@ -1,9 +1,9 @@
-from PIL import Image, ImageFilter, ImageOps, ImageColor, UnidentifiedImageError
-from globals import RESOLUTION, Transformation, Resize_Method, Color_Palette
+from PIL import Image, ImageOps, ImageColor, UnidentifiedImageError
+from globals import RESOLUTION, OMARCHY_THEME_PATH, Transformation, Resize_Method, Color_Palette
 from omarchy import get_omarchy_theme_colors
+from pathlib import Path
 import cv2
 import numpy
-import colorsys
 import os
 import math
 
@@ -30,7 +30,7 @@ def process(file_path, resolution, resize_method, transformation, color_palette)
                 color_palette = color_palette_photo3(image_obj)
                 image_obj = transform_colorize(image_obj, color_palette)
             case Color_Palette.OMARCHY.value:
-                color_palette = color_palette_omarchy(image_obj)
+                color_palette = color_palette_omarchy(image_obj, OMARCHY_THEME_PATH)
                 image_obj = transform_colorize(image_obj, color_palette)
 
     # Apply transformation
@@ -133,7 +133,7 @@ def transform_colorize(image_obj, color_palette):
 
         # Apply colorization
         transformed_image_obj = ImageOps.colorize(transformed_image_obj, black_color, white_color, mid_color, blackpoint, whitepoint, midpoint)
-        print(f"Image colorzed with: {color_palette} ")
+        print(f"Image colorized with: {color_palette} ")
         return transformed_image_obj
     except Exception as e:
         print(f"An unexpected error occurred while colorizing image - {e}")
@@ -169,10 +169,12 @@ def color_palette_photo3(image_obj):
         print(f"An unexpected error occurred while determining color palette - {e}")
         return None
 
-def color_palette_omarchy(image_obj):
+def color_palette_omarchy(image_obj, theme_path):
     try:
         # Get colors used in the currently applied omarchy theme.
-        omarchy_colors = get_omarchy_theme_colors();
+        home_dir = Path("~").expanduser()
+        file_path = home_dir / theme_path 
+        omarchy_colors = get_omarchy_theme_colors(file_path);
 
         if omarchy_colors:
             omarchy_RGB = {}
