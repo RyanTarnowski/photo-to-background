@@ -111,16 +111,16 @@ Example: {GREEN}python3 src/main.py "1440p" "resize" "water" "photo256"{RESET}
         test_image_obj.close()
         buffer.close()
 
-    #def test_transform_water(self):
-    #    test_image_obj = Image.open("./assets/tests/Castle1.jpg")
-    #    buffer = StringIO()
+    def test_transform_water(self):
+        test_image_obj = Image.open("./assets/tests/Castle1.jpg")
+        buffer = StringIO()
 
-    #    with redirect_stdout(buffer):
-    #        transform_water(test_image_obj)
-    #        self.assertEqual(buffer.getvalue(), "Image transformed to watercolor\n", "Transform to watercolor")
+        with redirect_stdout(buffer):
+            transform_water(test_image_obj)
+            self.assertEqual(buffer.getvalue(), "Image transformed to watercolor\n", "Transform to watercolor")
 
-    #   test_image_obj.close()
-    #    buffer.close()
+        test_image_obj.close()
+        buffer.close()
 
     def test_transform_colorize(self):
         test_image_obj = Image.open("./assets/tests/Castle1.jpg")
@@ -179,9 +179,8 @@ Example: {GREEN}python3 src/main.py "1440p" "resize" "water" "photo256"{RESET}
         test_image_obj.close()
         buffer.close()
 
-    #def test_get_omarchy_theme_colors(self):
-
-
-
-
+    def test_get_omarchy_theme_colors(self):
+        test_expected_data = {'accent': '#7aa2f7', 'cursor': '#c0caf5', 'foreground': '#a9b1d6', 'background': '#1a1b26', 'selection_foreground': '#c0caf5', 'selection_background': '#7aa2f7', 'color0': '#32344a', 'color1': '#f7768e', 'color2': '#9ece6a', 'color3': '#e0af68', 'color4': '#7aa2f7', 'color5': '#ad8ee6', 'color6': '#449dab', 'color7': '#787c99', 'color8': '#444b6a', 'color9': '#ff7a93', 'color10': '#b9f27c', 'color11': '#ff9e64', 'color12': '#7da6ff', 'color13': '#bb9af7', 'color14': '#0db9d7', 'color15': '#acb0d0'}
+        test_data = get_omarchy_theme_colors('./assets/tests/colors.toml')
+        self.assertEqual(test_data, test_expected_data, "Get Omarchy theme colors")
 
