@@ -1,6 +1,6 @@
 import unittest
 from globals import GREEN, RED, RESET, display_help_text, validate_argv
-from processing import valid_input_file, resize_image, crop_image, transform_water, transform_colorize, color_palette_photo256, color_palette_photo3, color_palette_omarchy
+from processing import save_image, valid_input_file, resize_image, crop_image, transform_water, transform_colorize, color_palette_photo256, color_palette_photo3, color_palette_omarchy
 from omarchy import get_omarchy_theme_colors
 from contextlib import redirect_stdout
 from io import StringIO
@@ -166,7 +166,19 @@ Example: {GREEN}python3 src/main.py "1440p" "resize" "water" "photo256"{RESET}
         self.assertEqual(test_colors, test_expected_colors, "3 color omarchy palette")
         test_image_obj.close()
 
-    #def test_save_image(self):
+    def test_save_image(self):
+        current_directory = os.getcwd()
+        test_image_obj = Image.open("./assets/tests/Castle1.jpg")
+        buffer = StringIO()
+
+        with redirect_stdout(buffer):
+            save_image(current_directory + '/assets/tests/Castle1.jpg', './assets/tests' , test_image_obj)
+            self.assertTrue(os.path.isfile('./output/Castle1_background.jpg'), "Save image")
+            self.assertEqual(buffer.getvalue(), f"Background image saved to: ./assets/tests/Castle1_background.jpg \n\n")
+
+        test_image_obj.close()
+        buffer.close()
+
     #def test_get_omarchy_theme_colors(self):
 
 

@@ -41,7 +41,7 @@ def process(file_path, resolution, resize_method, transformation, color_palette)
 
     # Save file to output
     if image_obj:
-        save_image(file_path, image_obj)
+        save_image(file_path, './output', image_obj)
 
 def valid_input_file(file_path):
     try:
@@ -192,12 +192,12 @@ def color_palette_omarchy(image_obj, theme_path):
         print(f"An unexpected error occurred while determining color palette - {e}")
         return None
 
-def save_image(file_path, image_obj):
+def save_image(file_path, dest_path, image_obj):
     try:
         filename = os.path.basename(file_path)
         basename, extension = os.path.splitext(filename)
         new_filename = f"{basename}_background{extension}"
-        new_full_path = os.path.join("./output", new_filename)
+        new_full_path = os.path.join(dest_path, new_filename)
         image_obj.save(new_full_path)
         print(f"Background image saved to: {new_full_path} \n")
     except Exception as e:
