@@ -13,9 +13,10 @@
                       /____/
 ```
 
+## Motivation
 The idea behind this project is to take a selection of real world photos I've taken and transform them into various stylized backgrounds. 
 
-## Features
+## Usage
 - Resize photo: 
   - Resize: Resizes photo to selected resolution. (Will stretch photo if not 16:9)
   - Crop: Center crop of photo to selected resolution. (Won't crop if photo is smaller than selected resolution)
@@ -66,7 +67,7 @@ pip list
 deactivate
 ```
 
-## How to Run
+## Quick Start
 1. Within your virtual environment you can run cmd:
 ```
 python3 src/main.py
@@ -87,3 +88,4 @@ python3 src/main.py "1440p" "crop" "none" "omarchy"
 
 6. Navigate to the output folder to view the results
 
+## Contributing
