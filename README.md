@@ -14,7 +14,7 @@
 ```
 
 ## Motivation
-The idea behind this project is to take a selection of real world photos I've taken and transform them into various stylized backgrounds. 
+I developed Photo 2 Background to take a selection of real-world photos I've taken and transform them into various stylized backgrounds that I can use as wallpapers on my devices. The project was built with Python and utilizes the Pillow library for most of the image transformations. Pillow is a fork of the Python Imaging Library.
 
 ## Usage
 - Resize photo: 
